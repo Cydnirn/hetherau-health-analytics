@@ -1,0 +1,11 @@
+{
+  "THING_NAME": "DummyDevice",
+  "CLIENT_ID": "dummyDevice",
+  "IOT_ENDPOINT": "a1138tbftbjhbs-ats.iot.us-east-1.amazonaws.com",
+  "CERT_PATH": "./certs/certificate.pem.crt",
+  "KEY_PATH": "./certs/private.pem.key",
+  "ROOT_CA_PATH": "./certs/AmazonRootCA1.pem",
+  "TOPIC": "iot/data",
+  "INTERVAL": 10,
+  "CITIZEN_ID": "C001"
+}
