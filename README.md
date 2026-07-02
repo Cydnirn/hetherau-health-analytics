@@ -96,6 +96,38 @@ and which may be deployed manually (with a point reduction).
 | 14 | **IAM Roles** | `hetherau-*-role` (6 roles) | **Required** | 0 | 0 | Bonus Points for AWS Lab Deployment |
 | 15 | **SageMaker Endpoint** | `hetherau-endpoint` | Manual only | +2 (bonus) | +2 (bonus) | Deployed via training script, not CF |
 
+Expected CloudFormation Outputs:
+
+```yaml
+  ApiGatewayUrl:
+    Description: API Gateway endpoint URL for the analytics dashboard
+    Value: !Sub https://${HetherauApiGateway}.execute-api.${AWS::Region}.amazonaws.com/prod/data
+
+  S3BucketName:
+    Description: S3 bucket for training data and batch results
+    Value: !Ref HetherauS3Bucket
+
+  KinesisStreamName:
+    Description: Kinesis data stream name
+    Value: !Ref HetherauKinesisStream
+
+  RawDynamoDBTable:
+    Description: Raw citizen data DynamoDB table
+    Value: !Ref RawCitizenDataTable
+
+  AnalyticsDynamoDBTable:
+    Description: Enriched analytics DynamoDB table
+    Value: !Ref AnalyticsTable
+
+  IotEndpoint:
+    Description: AWS IoT Core endpoint address
+    Value: !Sub ${AWS::Region}.amazonaws.com
+
+  StateMachineArn:
+    Description: Step Function state machine ARN
+    Value: !Ref HetherauStateMachine
+```
+
 ### Scoring Rules
 
 - **Full points (+2):** Resource exists, uses the `hetherau` naming prefix, AND was deployed via CloudFormation.
