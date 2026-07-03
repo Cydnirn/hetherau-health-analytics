@@ -38,7 +38,7 @@ graph TD
     end
 
     %% Batch Inference Layer
-    subgraph Batch_Inf [Batch Inference (Every 15 min)]
+    subgraph Batch_Inf [Batch Inference Every 15 min]
         EB[Amazon EventBridge <br/> Schedule Rule]
         SF[Step Function <br/> Orchestrator]
         GetData[Lambda: GetData <br/> Scan Raw Table]
