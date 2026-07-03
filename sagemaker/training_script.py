@@ -38,6 +38,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+train_model_id, train_model_version, train_scope = (
+    "lightgbm-classification-model",
+    "*",
+    "training",
+)
+
 
 def main():
     # ── Configuration ──────────────────────────────────────────
@@ -88,9 +94,11 @@ def main():
     logger.info("STEP 1: Retrieving LightGBM built-in algorithm image...")
 
     lightgbm_image = sagemaker.image_uris.retrieve(
-        framework="lightgbm",
+        framework=None,
         region=aws_region,
-        version="*",
+        model_id=train_model_id,
+        instance_type="ml.m5.large",
+        model_version="*",
         image_scope="training",
     )
 
